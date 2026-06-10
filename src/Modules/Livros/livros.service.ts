@@ -26,4 +26,7 @@ export class LivrosService {
     }
     return livrosEncontrado
   }
+  async listarLivrosComAutor() {
+    return await this.livrosRepository.listarLivrosComAutor();
+  }
 }

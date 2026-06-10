@@ -19,4 +19,9 @@ export class LivrosController {
   async listarLivro(@Param('id', ParseIntPipe) id: number) {
     return await this.livrosService.listarlivro(id);
   }
+
+  @Get('listar-livros-com-autor')
+  async listarLivrosComAutor() {
+    return await this.livrosService.listarLivrosComAutor();
+  }
 }

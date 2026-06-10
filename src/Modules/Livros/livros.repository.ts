@@ -1,6 +1,6 @@
 import { Inject, Injectable, InternalServerErrorException } from "@nestjs/common";
 import { DRIZZLE } from "src/db/database/database.constants";
-import { livrosTabela} from 'src/db/schemas';
+import { autoresTabela, livrosTabela} from 'src/db/schemas';
 import type { DrizzleDB} from 'src/db/types/drizzleDB';
 import { criarLivroDto } from "./livros.dto";
 import { eq } from "drizzle-orm";
@@ -39,6 +39,19 @@ export class LivrosRepository {
             return livros[0]
         }   catch (error) {
             throw new InternalServerErrorException('Erro ao listar livro')
+        }
+    }
+
+    async listarLivrosComAutor(){
+        try{
+            const livrosComAutor = await this.db
+            .select()
+            .from(livrosTabela)
+            .innerJoin(autoresTabela, eq(livrosTabela.idAutor, autoresTabela.id));
+
+            return livrosComAutor;
+        }   catch (error) {
+            throw new InternalServerErrorException('Erro ao listar livros com autor');
         }
     }
 }
