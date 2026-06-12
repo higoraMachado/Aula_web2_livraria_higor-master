@@ -40,4 +40,8 @@ export class AutoresController {
   deletarAutor(@Param('id', ParseIntPipe) idAutor: number) {
     return this.autoresService.deletarAutor(idAutor);
   }
+  @Put('inativar-autor/:id')
+  inativarAutor(@Param('id', ParseIntPipe) idAutor: number) {
+    return this.autoresService.inativarAutor(idAutor);
+  }
 }
