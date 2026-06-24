@@ -1,4 +1,3 @@
 export const DRIZZLE = Symbol('DRIZZLE');
 
-export const DATABASE_URL =
-  'mssql://alunos_des225:123@SRV-BD-1:1433/des225_higor?encrypt=false&trustServerCertificate=true';
+export const DATABASE_URL = process.env.DATABASE_URL ?? '';
